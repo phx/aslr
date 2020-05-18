@@ -1,6 +1,6 @@
 # aslr
 
-A completely over-engineered script that saves typing when working with Address Space Layout Randomization (ASLR) in the Linux kernel.
+A completely over-engineered `sh` script that saves typing when working with Address Space Layout Randomization (ASLR) in the Linux kernel.
 
 ## Install
 
