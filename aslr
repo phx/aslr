@@ -8,7 +8,7 @@ get_value() { cat "$file"; }
 # echo $1 | sudo tee $file
 # sudo sh -c "echo $1 > $file"
 filewrite() {
-  if [ "$UID" != "0" ]; then
+  if [ "$(whoami)" != "root" ]; then
     sysctl -w kernel.randomize_va_space="$1" > /dev/null 2>&1;
   else
     sudo sysctl -w kernel.randomize_va_space="$1" > /dev/null 2>&1;
@@ -49,7 +49,7 @@ exit
 }
 
 if ! sudo -v >/dev/null 2>&1; then
-  if [ "$UID" != "0" ]; then
+  if [ "$(whoami)" != "root" ]; then
     echo "$LOGNAME must have sudo privileges to change ASLR values."
     echo
     print_current_value
